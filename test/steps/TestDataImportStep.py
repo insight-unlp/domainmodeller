@@ -17,7 +17,7 @@ def setUpModule():
 
     '''        
     from storage_template import generate_tests
-    generate_tests(s, Paper, 'id')
+    generate_tests(s, Paper, 'slug')
     #'''
 
 ###### Paper object tests (auto-generated)
@@ -25,8 +25,8 @@ def setUpModule():
 def test_count_paper():
     eq_(2, s.query(Paper).count())
 
-def test_paper_1():
-    actual = s.query(Paper).filter(Paper.id==1).one()
+def test_paper_p1_txt():
+    actual = s.query(Paper).filter(Paper.slug==u'p1.txt').one()
     expected = Paper(
         id=actual.id,
         slug=u'p1.txt',
@@ -38,8 +38,8 @@ def test_paper_1():
     )
     db_eq(expected, actual)
 
-def test_paper_2():
-    actual = s.query(Paper).filter(Paper.id==2).one()
+def test_paper_p2_txt():
+    actual = s.query(Paper).filter(Paper.slug==u'p2.txt').one()
     expected = Paper(
         id=actual.id,
         slug=u'p2.txt',
