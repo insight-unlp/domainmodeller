@@ -12,7 +12,8 @@ celery.config_from_object(domainmodeller.celeryconfig)
 
 
 term_extractor = JavaServicesTermExtractor(settings.JAVA_SERVICES)
-@celery.task    
+# Need a timeout because GATE can take a long time if given garbage text
+@celery.task(time_limit=60)    
 def extract_terms(raw_text, domain_model):
     terms = term_extractor.extract_terms(raw_text, domain_model)
     return terms
