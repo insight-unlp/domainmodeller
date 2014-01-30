@@ -1,0 +1,58 @@
+############
+## Windows
+############
+
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+#############
+## Sphinx
+#############
+_build/
+
+#############
+## Python
+#############
+
+*.py[co]
+
+#############
+## Editors
+#############
+
+.classpath
+*.sublime*
+*.nja
+.project
+.pydevproject
+.settings/
+*.swp
+
+#############
+# Test output
+#############
+
+.coverage
+cover/
+
+#############
+## Misc
+#############
+*~
+*.log
+*.dump
+*.prof
+*.lprof
+.noseids
+logs/*
+
+############
+## setup.py files
+############
+*.egg
+*.egg-info
+build/
+

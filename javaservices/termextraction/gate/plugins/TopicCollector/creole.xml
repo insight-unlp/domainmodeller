@@ -1,0 +1,43 @@
+<!-- creole.xml TopicCollector -->
+<!--  alesch, 20/2/2009 -->
+<!-- $Id: creole.xml 9992 2008-10-31 16:53:29Z ian_roberts $ -->
+
+<!--
+	This file just references the JAR file that contains the compiled resource.
+	Configuration is contained in the @CreoleResource annotation on 
+	ie.deri.unlp.gate.javaservices.TopicCollector.
+-->
+
+<CREOLE-DIRECTORY>
+	<RESOURCE>
+		<NAME>Expertise Miner Topic Collector</NAME>
+		<JAR SCAN="true">TopicCollector.jar</JAR>
+		<CLASS>ie.deri.unlp.gate.topiccollector.TopicCollector</CLASS>
+                <COMMENT>A post-processing component for collecting the topics in frequency tables and adding them to the gate.document as features</COMMENT>
+
+    <PARAMETER NAME="topicTextualRepresentationFeatureName"
+      COMMENT="The string content for the topic annotation" RUNTIME="true"
+      DEFAULT="topicTextualRepresentation">
+      java.lang.String
+    </PARAMETER>
+
+
+		<PARAMETER NAME="topicAnnotationSetName"
+			COMMENT="The annotation type for topic annotations" RUNTIME="true"
+			DEFAULT="Topic">
+			java.lang.String
+		</PARAMETER>
+
+		<PARAMETER NAME="tokensNumberFeatureName"
+			COMMENT="The document feature containing the absolute topic frequencies"
+			RUNTIME="true" DEFAULT="tokensNumber">
+			java.lang.String
+		</PARAMETER>
+
+		<PARAMETER NAME="topicsListFeatureName"
+			COMMENT="The document feature containing the relative topic frequencies"
+			RUNTIME="true" DEFAULT="topicsList">
+			java.lang.String
+		</PARAMETER>
+	</RESOURCE>
+</CREOLE-DIRECTORY>

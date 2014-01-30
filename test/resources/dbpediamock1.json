@@ -1,0 +1,27 @@
+{
+  "head": {
+    "link": [
+      
+    ],
+    "vars": [
+      "page",
+      "redirect"
+    ]
+  },
+  "results": {
+    "distinct": false,
+    "ordered": true,
+    "bindings": [
+      {
+        "page": {
+          "type": "uri",
+          "value": "http:\/\/dbpedia.org\/resource\/Natural_Language_Processing"
+        },
+        "redirect": {
+          "type": "uri",
+          "value": "http:\/\/dbpedia.org\/resource\/Natural_language_processing"
+        }
+      }
+    ]
+  }
+}

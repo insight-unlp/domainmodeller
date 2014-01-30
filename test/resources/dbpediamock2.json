@@ -1,0 +1,22 @@
+{
+  "head": {
+    "link": [
+      
+    ],
+    "vars": [
+      "page"
+    ]
+  },
+  "results": {
+    "distinct": false,
+    "ordered": true,
+    "bindings": [
+      {
+        "page": {
+          "type": "uri",
+          "value": "http:\/\/dbpedia.org\/resource\/Natural_language_processing"
+        }
+      }
+    ]
+  }
+}

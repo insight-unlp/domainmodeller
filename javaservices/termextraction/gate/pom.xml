@@ -1,0 +1,164 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>ie.deri.unlp.javaservices</groupId>
+  <artifactId>gatetermextraction</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+
+
+  <build>
+      <plugins>
+		<plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-compiler-plugin</artifactId>
+		    <configuration>
+		        <source>1.6</source>
+		        <target>1.6</target>
+		    </configuration>
+		</plugin>
+
+		<!-- Run the ant build for the gate plugins-->
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>expertise-miner-plugin</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <tasks>
+                <property name="build.compiler" value="extJavac"/>
+                <property name="compile_classpath" 
+                          refid="maven.compile.classpath"/>
+                <property name="gate.home"
+                          value="${basedir}"/>
+                <ant antfile="${gate.home}/plugins/ExpertiseMiner/build.xml"
+                     target="clean"/>
+                <ant antfile="${gate.home}/plugins/ExpertiseMiner/build.xml"
+                     target="jar"/>
+              </tasks>
+            </configuration>
+          </execution>
+          <execution>
+            <id>topic-collector-plugin</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <tasks>
+                <property name="build.compiler" value="extJavac"/>
+                <property name="compile_classpath" 
+                          refid="maven.compile.classpath"/>
+                <property name="gate.home"
+                          value="${basedir}"/>
+                <ant antfile="${gate.home}/plugins/TopicCollector/build.xml"
+                     target="clean"/>
+                <ant antfile="${gate.home}/plugins/TopicCollector/build.xml"
+                     target="jar"/>
+              </tasks>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      
+		<!-- Install the gate jars in the maven client repository -->
+		<plugin>
+		  <artifactId>maven-install-plugin</artifactId>
+		  <version>2.3</version>
+		  
+			<executions>
+				<execution>
+				<id>install-gate</id>
+				<phase>install</phase>
+					<goals>
+						<goal>install-file</goal>
+					</goals>
+					<configuration>
+						<groupId>gate</groupId>
+						<artifactId>gate</artifactId>
+						<version>5.0</version>
+						<packaging>jar</packaging>
+						<file>${basedir}/lib/gate-5.0.jar</file>
+					</configuration>
+				</execution>
+				
+				<execution>
+				<id>install-gate-asm</id>
+				<phase>install</phase>
+					<goals>
+						<goal>install-file</goal>
+					</goals>
+					<configuration>
+						<groupId>gate</groupId>
+						<artifactId>gate-asm</artifactId>
+						<version>6.0</version>
+						<packaging>jar</packaging>
+						<file>${basedir}/lib/gate-asm-6.0.jar</file>
+					</configuration>
+				</execution>
+				
+
+				<execution>
+				<id>install-gate-compiler</id>
+				<phase>install</phase>
+					<goals>
+						<goal>install-file</goal>
+					</goals>
+					<configuration>
+						<groupId>gate</groupId>
+    					<artifactId>gate-compiler-jdt</artifactId>
+    					<version>6.0</version>
+						<packaging>jar</packaging>
+						<file>${basedir}/lib/gate-compiler-jdt-6.0.jar</file>
+					</configuration>
+				</execution>
+				
+				<!-- Install the Expertise Miner jar in the maven client 
+				repository -->
+				<execution>
+				<id>install-gate-expertise-miner</id>
+				<phase>install</phase>
+					<goals>
+						<goal>install-file</goal>
+					</goals>
+					<configuration>
+						<groupId>expertiseminer</groupId>
+						<artifactId>expertiseminer</artifactId>
+						<version>1.0</version>
+						<packaging>jar</packaging>
+						<file>${basedir}/plugins/ExpertiseMiner/ExpertiseMiner.jar</file>
+					</configuration>
+				</execution>
+				<execution>
+				
+				<!-- Install the Topic Collector jar in the maven client 
+				repository -->
+				<id>install-gate-topic-collector</id>
+				<phase>install</phase>
+					<goals>
+						<goal>install-file</goal>
+					</goals>
+					<configuration>
+						<groupId>topiccollector</groupId>
+						<artifactId>topiccollector</artifactId>
+						<version>1.0</version>
+						<packaging>jar</packaging>
+						<file>${basedir}/plugins/TopicCollector/TopicCollector.jar</file>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+      
+    </plugins>
+  </build>
+
+</project>

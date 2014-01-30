@@ -1,0 +1,10 @@
+target/
+classes/
+*.log
+*.swp
+index.path/
+luceneTestIndex/
+.project
+.classpath
+.settings/
+*evaluation.csv
