@@ -66,8 +66,14 @@ class WordNetFilter:
         return False
     
     def _filter_named_entity(self, synsets, topic_string):
+        def get_lemma_names(synset):
+            # Future NLTK compatibility: In NLTK 3 lemma_names is a function
+            if isinstance(s.lemma_names, list):
+                return s.lemma_names
+            return s.lemma_names()
+        
         # Hacky attempt to remove named entities (we only want entity classes)
-        return [s for s in synsets if not topic_string.title() in s.lemma_names()]
+        return [s for s in synsets if not topic_string.title() in get_lemma_names(s)]
     
     def _filter_miscellaneous(self, synsets, topic_string):        
         invalid = ('noun.attribute', 'noun.time', 'noun.cognition')
