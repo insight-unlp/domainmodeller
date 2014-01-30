@@ -1,7 +1,5 @@
 DATABASE='testing'
 
-SOLR_ROOT = 'http://localhost:8080/solr/'
-
 BACKEND = {
     'backend': 'mysql',
     'user': 'root',

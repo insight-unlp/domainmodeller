@@ -1,11 +1,6 @@
 from sqlalchemy.engine import create_engine
 from sqlalchemy import event
 
-def init_solr(database, solr_root):
-    from domainmodeller.storage.SolrStorage import SolrStorage
-    url = solr_root.rstrip('/') + '/' + database
-    return SolrStorage(url)
-
 def init_storage(database, backend, user=None, password=None, host=None, debug=False):
     engine = _init_engine(database, backend, user=user, password=password, 
                           host=host, debug=debug)

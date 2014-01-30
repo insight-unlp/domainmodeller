@@ -83,7 +83,7 @@ class TestDBPediaLookup(unittest.TestCase):
         from domainmodeller import settings
         settings.DBPEDIA_LOOKUP_SERVICE = 'http://dbpedia_service/'
         
-        task_hub = TaskHub(storage, None)
+        task_hub = TaskHub(storage)
         task_hub.run('dbpedia_lookup')
 
     def test_topic(self):

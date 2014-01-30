@@ -7,7 +7,6 @@ from sqlalchemy.orm import session
 from sqlalchemy.orm.util import class_mapper
 import re
 storage = Storage.init_storage(settings.DATABASE, **settings.BACKEND)
-solr = Storage.init_solr(settings.DATABASE, settings.SOLR_ROOT)
 
 from domainmodeller.storage.schema import PaperTerm, Paper, Topic
 

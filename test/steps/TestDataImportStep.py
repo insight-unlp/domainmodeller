@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- 
-from .storage_template import storage, solr
+from .storage_template import storage
 from domainmodeller.util import misc 
 from nose.tools import eq_
 from domainmodeller.storage.schema import Paper
@@ -12,7 +12,7 @@ def setUpModule():
     storage.clear()
     sxf = misc.get_package_path('test', 'resources', 'dataimport')
     
-    task_hub = TaskHub(storage, solr)
+    task_hub = TaskHub(storage)
     task_hub.run('import_directory ' + sxf)
 
     '''        

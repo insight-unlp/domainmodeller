@@ -6,8 +6,8 @@ import logging
 
 log_path = misc.get_package_path('logs', 'domainmodeller.log')
 
-def run(storage, solr, args, log_console=False, log_level=logging.INFO):
-    task_hub = TaskHub(storage, solr)
+def run(storage, args, log_console=False, log_level=logging.INFO):
+    task_hub = TaskHub(storage)
     
     logging_utils.init_logger('domainmodeller', console=log_console, console_level=log_level, 
                               file=log_path, file_level=log_level)
@@ -46,9 +46,7 @@ def main():
 
     from domainmodeller.storage import Storage
     storage = Storage.init_storage(database, **settings.BACKEND)
-    solr = Storage.init_solr(database, settings.SOLR_ROOT)
-    
-    run(storage, solr, argv[1:], log_console=verbose, log_level=log_level)
+    run(storage, argv[1:], log_console=verbose, log_level=log_level)
     
 if __name__ == '__main__':
     main()

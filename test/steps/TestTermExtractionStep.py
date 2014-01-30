@@ -4,7 +4,7 @@ from domainmodeller.TaskHub import TaskHub
 from storage_template import db_eq, add_detached
 from domainmodeller.storage.schema import Paper, PaperTerm
 
-from .storage_template import storage, solr
+from .storage_template import storage
 
 s = storage.session()
 
@@ -43,7 +43,7 @@ def setUpModule():
     docs = [paper1, paper2]
     add_detached(docs)
     
-    task_hub = TaskHub(storage, solr)
+    task_hub = TaskHub(storage)
     task_hub.run('extract_terms')
 
     '''

@@ -3,5 +3,5 @@ from domainmodeller.TaskHub import TaskHub
 
 def test_stats_runs():
     storage.clear()
-    task_hub = TaskHub(storage, None)
+    task_hub = TaskHub(storage)
     task_hub.run('stats')

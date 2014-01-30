@@ -1,5 +1,5 @@
 from domainmodeller.TaskHub import TaskHub
-from storage_template import storage, db_eq, add_detached, solr
+from storage_template import storage, db_eq, add_detached
 from domainmodeller.storage.schema import Paper, PaperTerm, Topic
 from nose.tools import eq_
 import unittest
@@ -52,7 +52,7 @@ class TopicCreationTestBase(object):
             # Leave out topic2_term1 so occurrence finder can find it
         ])
     
-        task_hub = TaskHub(storage, solr)
+        task_hub = TaskHub(storage)
         task_hub.run('create_topics min_occ=1 use_hadoop=%s' % cls.use_hadoop)
     
         '''

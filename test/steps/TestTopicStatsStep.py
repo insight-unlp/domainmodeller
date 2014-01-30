@@ -1,6 +1,6 @@
 from storage_template import db_eq, add_detached
 from domainmodeller.storage.schema import Paper, Topic
-from .storage_template import storage, solr
+from .storage_template import storage
 from nose.tools import eq_
 from domainmodeller.TaskHub import TaskHub
 
@@ -65,7 +65,7 @@ def setUpModule():
     add_detached([paper1, paper2])
     add_detached([t_nl, t_nlp, t_anlp, t_filter])
 
-    task_hub = TaskHub(storage, solr)
+    task_hub = TaskHub(storage)
     # If tests change, look at the scores and set this accordingly so that the
     # intended topic gets filtered
     task_hub.run('topic_stats min_score=3.0')

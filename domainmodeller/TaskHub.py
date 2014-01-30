@@ -26,9 +26,8 @@ class CommandLineArgsError(TaskError):
     pass
 
 class TaskHub:
-    def __init__(self, storage, solr):
+    def __init__(self, storage):
         self.storage = storage
-        self.solr = solr
         
         self._task_name_to_func = OrderedDict([
             ('clear_storage',                    self.task_clear_storage),
