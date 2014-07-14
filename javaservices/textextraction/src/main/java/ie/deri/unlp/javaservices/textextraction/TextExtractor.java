@@ -72,13 +72,11 @@ public class TextExtractor {
 		
 		Matcher matcher = whitespace.matcher(content);
 		StringBuffer result = new StringBuffer();
-		HashSet<String> blah = new HashSet<String>();
 		while (matcher.find()) {
 			String mergedWord = matcher.group(1) + "-" + matcher.group(2);
 			if (content.contains(mergedWord)) {
 				matcher.appendReplacement(result, mergedWord);
 			} else {
-				blah.add(mergedWord);
 				matcher.appendReplacement(result, "$1$2");
 			}
 		}
